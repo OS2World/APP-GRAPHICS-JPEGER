@@ -1,0 +1,50 @@
+
+all: \
+    .\jpeger.exe
+
+.\jpeger.res: \
+    .\jpeger.rc \
+    images\jpeger.ico \
+    {.;$(INCLUDE)}jpeger.dlg \
+    {.;$(INCLUDE)}jpeger.h
+
+.\jpeger_main.obj: \
+    .\jpeger_main.cpp \
+    {.;$(INCLUDE);}jpeger.h \
+    {.;$(INCLUDE);}jpeger_resize.hpp \
+    {.;$(INCLUDE);}jpeger_main.hpp \
+    {.;$(INCLUDE);}jpeger_banner.hpp \
+    {.;$(INCLUDE);}ontophandler.hpp \
+    {.;$(INCLUDE);}jpeger_colourcube.hpp \
+    {.;$(INCLUDE);}jpeger_compression.hpp \
+    {.;$(INCLUDE);}jpeger_decompression.hpp
+
+.\jpeger_decompression.obj: \
+    .\jpeger_decompression.cpp \
+    {.;$(INCLUDE);}jpeger.h \
+    {.;$(INCLUDE);}jpeger_main.hpp \
+    {.;$(INCLUDE);}jpeger_decompression.hpp
+
+.\jpeger_compression.obj: \
+    .\jpeger_compression.cpp \
+    {.;$(INCLUDE);}jpeger.h \
+    {.;$(INCLUDE);}jpeger_main.hpp \
+    {.;$(INCLUDE);}jpeger_compression.hpp
+
+.\jpeger_colourcube.obj: \
+    .\jpeger_colourcube.cpp \
+    {.;$(INCLUDE);}jpeger_colourcube.hpp
+
+.\jpeger_banner.obj: \
+    .\jpeger_banner.cpp \
+    {.;$(INCLUDE);}jpeger.h \
+    {.;$(INCLUDE);}jpeger_banner.hpp \
+    {.;$(INCLUDE);}ontophandler.hpp
+
+.\jpeger_resize.obj: \
+    .\jpeger_resize.cpp \
+    {.;$(INCLUDE);}jpeger.h \
+    {.;$(INCLUDE);}jpeger_resize.hpp \
+    {.;$(INCLUDE);}jpeger_main.hpp
+
+

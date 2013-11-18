@@ -1,0 +1,26 @@
+                           Upload Information Template for Hobbes.nmsu.edu
+                           ===============================================
+
+            Archive Name:  jpeger04_beta.zip
+       Short Description:  Process JPEG image files; _VERY_ LIMITED BETA
+        Long Description:  Simple image processing tool; released with source code to encourage other programmers to participate in the project since I personally haven't had much time to work on this lately
+
+      Proposed directory
+           for placement:  /pub/os2/apps/graphics/viewer
+
+               Your name:  Stephane Charette
+           Email address:  charette@writeme.com
+    Program contact name:  (same)
+   Program contact email:  (same)
+        Program homepage:  (none yet)
+
+      Would you like the
+     contact information
+                included?  yes
+
+Operating System/Version:  OS/2 v3.x, 4.x
+ Additional requirements:  VisualAge C++ v3.0 (only required if to recompile)
+
+                Replaces:  /pub/os2/apps/graphics/viewer/jpeger01_beta.zip
+
+

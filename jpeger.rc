@@ -1,0 +1,112 @@
+#include "jpeger.h"
+
+rcinclude jpeger.dlg
+
+
+ICON WND_MAIN "images\\jpeger.ico"
+BITMAP BM_BANNER "images\\jpeger_startup_240x180x16_beta.bmp"
+
+
+MENU WND_MAIN preload
+{
+   SUBMENU "~File",                             0,                      MIS_TEXT
+   {
+      MENUITEM "~Open...\tAlt+O",               MI_OPEN,                MIS_TEXT
+      MENUITEM "~Save\tAlt+S",                  MI_SAVE,                MIS_TEXT
+      MENUITEM "Save ~as...\tAlt+A",            MI_SAVE_AS,             MIS_TEXT
+      MENUITEM "",                              0,                      MIS_SEPARATOR
+      MENUITEM "~Close view",                   MI_CLOSE,               MIS_TEXT
+   }
+
+   SUBMENU "~Image",                            0,                      MIS_TEXT
+   {
+      MENUITEM "Rotate ~90 degrees\tCtrl+9",    MI_ROTATE_90,           MIS_TEXT
+      MENUITEM "Reflect ~horizontally\tCtrl+H", MI_FLIP_HORIZONTAL,     MIS_TEXT
+      MENUITEM "Reflect ~vertically\tCtrl+V",   MI_FLIP_VERTICAL,       MIS_TEXT
+      MENUITEM "Transpose\tCtrl+T",             MI_TRANSPOSE,           MIS_TEXT
+      MENUITEM "~Crop\tCtrl+C",                 MI_CROP,                MIS_TEXT
+      MENUITEM "~Resize\tCtrl+R",               MI_RESIZE,              MIS_TEXT
+      MENUITEM "",                              0,                      MIS_SEPARATOR
+      MENUITEM "~Compression options\tAlt+C",   MI_COMPRESS_OPTIONS,    MIS_TEXT
+      MENUITEM "~Decompression options\tAlt+D", MI_DECOMPRESS_OPTIONS,  MIS_TEXT
+
+   }
+   SUBMENU "~Display",                          0,                      MIS_TEXT
+   {
+      MENUITEM "~Horizontal\tAlt+H",            MI_HORIZONTAL,          MIS_TEXT
+      MENUITEM "~Vertical\tAlt+V",              MI_VERTICAL,            MIS_TEXT, MIA_CHECKED
+      MENUITEM "",                              0,                      MIS_SEPARATOR
+      MENUITEM "View ~Source\tAlt+1",           MI_SOURCE,              MIS_TEXT
+      MENUITEM "View ~Destination\tAlt+2",      MI_DESTINATION,         MIS_TEXT
+      MENUITEM "",                              0,                      MIS_SEPARATOR
+      MENUITEM "~About...\tF12",                MI_ABOUT,               MIS_TEXT
+   }
+}
+
+
+ACCELTABLE WND_MAIN preload
+{
+   "A",  MI_SAVE_AS,             ALT
+   "a",  MI_SAVE_AS,             ALT
+   "C",  MI_COMPRESS_OPTIONS,    ALT
+   "c",  MI_COMPRESS_OPTIONS,    ALT
+   "D",  MI_DECOMPRESS_OPTIONS,  ALT
+   "d",  MI_DECOMPRESS_OPTIONS,  ALT
+   "H",  MI_HORIZONTAL,          ALT
+   "h",  MI_HORIZONTAL,          ALT
+   "O",  MI_OPEN,                ALT
+   "o",  MI_OPEN,                ALT
+   "S",  MI_SAVE,                ALT
+   "s",  MI_SAVE,                ALT
+   "V",  MI_VERTICAL,            ALT
+   "v",  MI_VERTICAL,            ALT
+   "1",  MI_SOURCE,              ALT
+   "2",  MI_DESTINATION,         ALT
+
+   "9",  MI_ROTATE_90,           CONTROL
+   "C",  MI_CROP,                CONTROL
+   "c",  MI_CROP,                CONTROL
+   "H",  MI_FLIP_HORIZONTAL,     CONTROL
+   "h",  MI_FLIP_HORIZONTAL,     CONTROL
+   "r",  MI_RESIZE,              CONTROL
+   "R",  MI_RESIZE,              CONTROL
+   "T",  MI_TRANSPOSE,           CONTROL
+   "t",  MI_TRANSPOSE,           CONTROL
+   "V",  MI_FLIP_VERTICAL,       CONTROL
+   "v",  MI_FLIP_VERTICAL,       CONTROL
+
+   VK_F12, MI_ABOUT,             VIRTUALKEY
+}
+
+
+STRINGTABLE loadoncall discardable
+{
+   EF_BYTES_1                    "size (in bytes) of original image"
+   EF_COLOURS_1                  "number of colours in original image"
+   EF_SIZE_1                     "dimensions of original image"
+   EF_BYTES_2                    "size (in bytes) of new image"
+   EF_COLOURS_2                  "number of colours in new image"
+   EF_SIZE_2                     "dimensions of new image"
+
+   RB_USE_24_BIT_COLOUR          "render the image in 24-bit RGB colour (recommended)"
+   RB_QUANTIZE_COLOURS           "render the image with only 256 colours or less (not recommended)"
+   SL_NUMBER_OF_COLOURS          "select the number of colours to use"
+   RB_USE_1_PASS_QUANTIZATION    "faster than 2-pass but of much lower quality"
+   RB_USE_2_PASS_QUANTIZATION    "slower than 1-pass but renders much better quality"
+   RB_NO_DITHERING               "fastest speed, lowest quality"
+   RB_ORDERED_DITHERING          "medium speed, medium quality"
+   RB_FLOYD_STEINBERG_DITHERING  "slowest speed, best quality"
+   CK_FANCY_UPSAMPLING           "upsampling is marginally slower and often does not produce noticeable difference"
+   CK_BLOCK_SMOOTHING            "progressive JPEG may appear blocky during loading without block smoothing"
+
+   RB_COMPRESS_SLOW_INTEGER      "slow but high-quality compression"
+   RB_COMPRESS_FAST_INTEGER      "fast and low-quality compression"
+   RB_COMPRESS_FLOAT             "comparable in quality to slow integer compression but sometimes faster"
+   CK_HUFFMAN_OPTIMIZATION       "optimize tables after compression, slower but may reduce file size"
+   SL_QUALITY                    "larger values for quality result in larger, better-quality files"
+   SL_SMOOTHING                  "set to 0 to disable image smoothing"
+   CK_FORCE_BASELINE             "force baseline, only used when quality is less than 25"
+   CK_PROGRESSIVE_JPEG           "create progressive JPEG files; file will be slightly larger"
+}
+
+
